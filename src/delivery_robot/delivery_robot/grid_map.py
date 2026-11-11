@@ -1,19 +1,30 @@
 class GridMap:
     """
-    Bản đồ lưới cho campus.
+    Bản đồ lưới cho campus (map lớn = COLS x ROWS ô map gốc ghép lại).
 
     0 = không đi được
     1 = đường robot có thể đi
+
+    Phải khớp với worlds/delivery_world_10x.sdf
+    (sinh bằng tools/make_big_world.py).
     """
 
-    def __init__(self, resolution=1.0):
-        self.resolution = resolution
+    # Kích thước 1 ô map gốc (m) và số ô ghép
+    TILE_W = 42
+    TILE_H = 30
+    COLS = 5
+    ROWS = 2
 
-        # Phạm vi campus
-        self.x_min = -15
-        self.x_max = 15
-        self.y_min = -10
-        self.y_max = 10
+    def __init__(self, resolution=1.0, cols=COLS, rows=ROWS):
+        self.resolution = resolution
+        self.cols = cols
+        self.rows = rows
+
+        # Phạm vi campus: ô (0,0) nằm quanh gốc toạ độ như map gốc
+        self.x_min = -21
+        self.x_max = 21 + self.TILE_W * (cols - 1)
+        self.y_min = -15
+        self.y_max = 15 + self.TILE_H * (rows - 1)
 
         self.width = int(
             (self.x_max - self.x_min) / self.resolution
@@ -69,85 +80,86 @@ class GridMap:
         return self.grid[gx][gy] == 1
 
     # --------------------------------------------------
+    # Tiện ích tô ô đường
+    # --------------------------------------------------
+
+    def _fill(self, xs, ys, value=1):
+        for x in xs:
+            for y in ys:
+                gx, gy = self.world_to_grid(x, y)
+
+                if self.is_valid(gx, gy):
+                    self.grid[gx][gy] = value
+
+    # --------------------------------------------------
     # Tạo các đoạn đường
     # --------------------------------------------------
 
     def create_roads(self):
 
         # ==============================
-        # ĐƯỜNG CHÍNH
-        # x: -15 -> 15
-        # y: -2 -> 2
+        # ĐƯỜNG CHÍNH: liền mạch xuyên cả COLS ô, mỗi hàng 1 đường
+        # y: -2 -> 2 (cộng offset của hàng)
         # ==============================
 
-        for x in range(-15, 16):
-            for y in range(-2, 3):
-
-                gx, gy = self.world_to_grid(x, y)
-
-                if self.is_valid(gx, gy):
-                    self.grid[gx][gy] = 1
-
-        # ==============================
-        # NHÁNH GIẢNG ĐƯỜNG
-        # x ≈ 7
-        # y: 2 -> 6  (tòa nhà bắt đầu từ y = 6.5)
-        # ==============================
-
-        for x in range(6, 9):
-            for y in range(2, 7):
-
-                gx, gy = self.world_to_grid(x, y)
-
-                if self.is_valid(gx, gy):
-                    self.grid[gx][gy] = 1
+        for r in range(self.rows):
+            dy = r * self.TILE_H
+            self._fill(
+                range(self.x_min, self.x_max + 1),
+                range(-2 + dy, 3 + dy),
+            )
 
         # ==============================
-        # NHÁNH THƯ VIỆN
-        # x ≈ -7
-        # y: -7 -> -1  (tòa nhà kết thúc ở y = -7)
+        # ĐẠI LỘ DỌC: mép trái mỗi ô (x = -21 -> -18),
+        # chạy suốt chiều cao map, nối các hàng với nhau
         # ==============================
 
-        for x in range(-8, -5):
-            for y in range(-7, 0):
-
-                gx, gy = self.world_to_grid(x, y)
-
-                if self.is_valid(gx, gy):
-                    self.grid[gx][gy] = 1
+        for c in range(self.cols):
+            dx = c * self.TILE_W
+            self._fill(
+                range(-21 + dx, -18 + dx),
+                range(self.y_min, self.y_max + 1),
+            )
 
         # ==============================
-        # NHÁNH SÂN TRƯỜNG
-        # x ≈ 12
-        # y: 2 -> 6
+        # NHÁNH TRONG TỪNG Ô (giống map gốc, cộng offset ô)
         # ==============================
 
-        for x in range(11, 14):
-            for y in range(2, 7):
+        for r in range(self.rows):
+            for c in range(self.cols):
+                dx = c * self.TILE_W
+                dy = r * self.TILE_H
 
-                gx, gy = self.world_to_grid(x, y)
+                # Nhánh giảng đường: x ≈ 7, y: 2 -> 6
+                self._fill(range(6 + dx, 9 + dx), range(2 + dy, 7 + dy))
 
-                if self.is_valid(gx, gy):
-                    self.grid[gx][gy] = 1
+                # Nhánh thư viện: x ≈ -7, y: -7 -> -1
+                self._fill(range(-8 + dx, -5 + dx), range(-7 + dy, 0 + dy))
+
+                # Nhánh sân trường: x ≈ 12, y: 2 -> 6
+                self._fill(range(11 + dx, 14 + dx), range(2 + dy, 7 + dy))
 
     # --------------------------------------------------
-    # Vật cản nằm trên đường (khớp với file world)
+    # Vật cản nằm trên đường (lặp lại ở mọi ô)
     # --------------------------------------------------
 
     def create_obstacles(self):
 
-        # (danh sách x, danh sách y) theo tọa độ world nguyên
+        # (danh sách x, danh sách y) theo tọa độ world nguyên, trong 1 ô
         blocks = [
             ([0], [1, 2]),             # planter_box  (0, 1.5)
             ([5], [-2, -1]),           # traffic_cone (5, -1.5)
             ([-4, -3, -2], [-2, -1]),  # bench_1      (-3, -1.5)
         ]
 
-        for xs, ys in blocks:
-            for x in xs:
-                for y in ys:
+        for r in range(self.rows):
+            for c in range(self.cols):
+                dx = c * self.TILE_W
+                dy = r * self.TILE_H
 
-                    gx, gy = self.world_to_grid(x, y)
-
-                    if self.is_valid(gx, gy):
-                        self.grid[gx][gy] = 0
+                for xs, ys in blocks:
+                    self._fill(
+                        [x + dx for x in xs],
+                        [y + dy for y in ys],
+                        value=0,
+                    )

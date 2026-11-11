@@ -1,0 +1,148 @@
+<sdf version="1.10">
+
+  <world name="delivery_world">
+
+    <!-- =========================
+         GAZEBO SYSTEM PLUGINS
+         ========================= -->
+
+    <!-- Physics -->
+    <plugin
+        filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+    </plugin>
+
+    <!-- User Commands -->
+    <plugin
+        filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+    </plugin>
+
+    <!-- Scene Broadcaster -->
+    <plugin
+        filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+
+    <!-- Sensors - dùng cho LiDAR -->
+    <plugin
+        filename="gz-sim-sensors-system"
+        name="gz::sim::systems::Sensors">
+
+      <render_engine>ogre2</render_engine>
+
+    </plugin>
+
+
+    <!-- =========================
+         CÀI ĐẶT MÔI TRƯỜNG
+         ========================= -->
+
+    <scene>
+
+      <!-- Ánh sáng môi trường -->
+      <ambient>0.5 0.5 0.5 1</ambient>
+
+      <!-- Màu nền bầu trời -->
+      <background>0.7 0.8 1.0 1</background>
+
+      <!-- Có bóng -->
+      <shadows>true</shadows>
+
+    </scene>
+
+
+    <!-- =========================
+         ÁNH SÁNG MẶT TRỜI
+         ========================= -->
+
+    <light
+        name="sun"
+        type="directional">
+
+      <pose>0 0 10 0 0 0</pose>
+
+      <direction>-0.5 0.5 -1</direction>
+
+      <diffuse>1 1 1 1</diffuse>
+
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <cast_shadows>true</cast_shadows>
+
+    </light>
+
+
+    <!-- =========================
+         MẶT ĐẤT
+         ========================= -->
+
+    <model name="ground">
+
+      <static>true</static>
+
+      <link name="ground_link">
+
+        <!-- Collision của mặt đất -->
+        <collision name="collision">
+
+          <geometry>
+
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+
+          </geometry>
+
+        </collision>
+
+
+        <!-- Hiển thị mặt đất -->
+        <visual name="visual">
+
+          <geometry>
+
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+
+          </geometry>
+
+          <!-- Màu mặt đất -->
+          <material>
+
+            <ambient>0.5 0.5 0.5 1</ambient>
+
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- =========================
+         XE GIAO HÀNG
+         ========================= -->
+
+    <include>
+
+      <uri>
+        file:///home/lap/delivery_robot_ws/src/delivery_robot/models/delivery_robot/delivery_robot.sdf
+      </uri>
+
+      <name>delivery_robot</name>
+
+      <pose>0 0 0 0 0 0</pose>
+
+    </include>
+
+
+  </world>
+
+</sdf>

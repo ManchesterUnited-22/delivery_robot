@@ -34,11 +34,23 @@ class AStarNode(Node):
             self.plan_path
         )
 
-        # Start và Goal
-        self.start = (-14.0, -1.0)
-        self.goal = (7.0, 5.8)   # delivery_point_1 (xanh lá)
-        # DP2 (xanh dương): (-7.0, -5.8)
-        # DP3 (cam):        (12.0, 5.8)
+        # Start và Goal (đổi bằng --ros-args -p goal_x:=... -p goal_y:=...)
+        # Mỗi ô map lớn lệch (+42 m theo x, +30 m theo y) so với ô gốc.
+        # Ví dụ DP3 (cam) ở ô cột 4, hàng 1: x = 12 + 4*42, y = 5.8 + 30
+        self.declare_parameter("start_x", -14.0)
+        self.declare_parameter("start_y", -1.0)
+        self.declare_parameter("goal_x", 7.0)    # delivery_point_1 (xanh lá)
+        self.declare_parameter("goal_y", 5.8)
+        # Ô gốc: DP2 (xanh dương) (-7.0, -5.8) | DP3 (cam) (12.0, 5.8)
+
+        self.start = (
+            self.get_parameter("start_x").value,
+            self.get_parameter("start_y").value,
+        )
+        self.goal = (
+            self.get_parameter("goal_x").value,
+            self.get_parameter("goal_y").value,
+        )
 
         self.logged = False
 

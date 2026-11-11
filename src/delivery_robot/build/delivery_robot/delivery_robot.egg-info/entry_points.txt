@@ -1,0 +1,4 @@
+[console_scripts]
+a_star_node = delivery_robot.a_star_node:main
+auto_controller = delivery_robot.keyboard_controller:main
+dwa_node = delivery_robot.dwa_node:main

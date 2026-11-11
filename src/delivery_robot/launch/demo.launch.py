@@ -3,7 +3,8 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, TimerAction
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, TimerAction
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 
 
@@ -11,11 +12,20 @@ def generate_launch_description():
 
     package_dir = get_package_share_directory("delivery_robot")
 
-    world_file = os.path.join(
+    # Map mặc định: map lớn (10 ô ghép lại, 210 m x 60 m).
+    # Muốn chạy map gốc:  ros2 launch delivery_robot demo.launch.py \
+    #                        world:=delivery_world_1x.sdf
+    world_arg = DeclareLaunchArgument(
+        "world",
+        default_value="delivery_world_10x.sdf",
+        description="Tên file world trong thư mục worlds/",
+    )
+
+    world_file = PathJoinSubstitution([
         package_dir,
         "worlds",
-        "delivery_world.sdf"
-    )
+        LaunchConfiguration("world"),
+    ])
 
     robot_file = os.path.join(
         package_dir,
@@ -125,7 +135,7 @@ def generate_launch_description():
         output="screen",
     )
 
-       # =========================================================
+    # =========================================================
     # A*
     # =========================================================
     a_star_node = Node(
@@ -147,6 +157,8 @@ def generate_launch_description():
     # LAUNCH ALL
     # =========================================================
     return LaunchDescription([
+
+        world_arg,
 
         # Gazebo
         gazebo,
