@@ -1,0 +1,173 @@
+import os
+
+from ament_index_python.packages import get_package_share_directory
+
+from launch import LaunchDescription
+from launch.actions import ExecuteProcess, TimerAction
+from launch_ros.actions import Node
+
+
+def generate_launch_description():
+
+    package_dir = get_package_share_directory("delivery_robot")
+
+    world_file = os.path.join(
+        package_dir,
+        "worlds",
+        "delivery_world.sdf"
+    )
+
+    robot_file = os.path.join(
+        package_dir,
+        "models",
+        "delivery_robot",
+        "delivery_robot.sdf"
+    )
+
+    # =========================================================
+    # GAZEBO
+    # =========================================================
+    gazebo = ExecuteProcess(
+        cmd=[
+            "gz",
+            "sim",
+            "-r",
+            world_file
+        ],
+        output="screen"
+    )
+
+    # =========================================================
+    # SPAWN ROBOT
+    # =========================================================
+    spawn_robot = Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=[
+            "-name", "delivery_robot",
+            "-file", robot_file,
+            "-x", "-14.0",
+            "-y", "-1.0",
+            "-z", "0.2",
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # CMD_VEL BRIDGE
+    # =========================================================
+    cmd_vel_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist"
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # LIDAR BRIDGE
+    # =========================================================
+    lidar_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan"
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # IMU BRIDGE
+    # =========================================================
+    imu_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # CAMERA BRIDGE
+    # =========================================================
+    camera_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image"
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # GPS BRIDGE
+    # =========================================================
+    gps_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/gps@sensor_msgs/msg/NavSatFix[gz.msgs.NavSat"
+        ],
+        output="screen",
+    )
+
+    # =========================================================
+    # ODOMETRY BRIDGE
+    # =========================================================
+    odom_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/model/delivery_robot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry"
+        ],
+        output="screen",
+    )
+
+       # =========================================================
+    # A*
+    # =========================================================
+    a_star_node = Node(
+        package="delivery_robot",
+        executable="a_star_node",
+        output="screen",
+    )
+
+    # =========================================================
+    # DWA
+    # =========================================================
+    dwa_node = Node(
+        package="delivery_robot",
+        executable="dwa_node",
+        output="screen",
+    )
+
+    # =========================================================
+    # LAUNCH ALL
+    # =========================================================
+    return LaunchDescription([
+
+        # Gazebo
+        gazebo,
+
+        # Robot
+        spawn_robot,
+
+        # Bridges
+        cmd_vel_bridge,
+        lidar_bridge,
+        imu_bridge,
+        camera_bridge,
+        gps_bridge,
+        odom_bridge,
+
+        # Chờ Gazebo ổn định rồi chạy thuật toán
+        TimerAction(
+            period=3.0,
+            actions=[
+                a_star_node,
+                dwa_node,
+            ]
+        ),
+    ])

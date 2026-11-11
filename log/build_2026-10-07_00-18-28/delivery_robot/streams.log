@@ -1,0 +1,19 @@
+[1.040s] Invoking command in '/home/lap/delivery_robot_ws/build/delivery_robot': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data
+[1.325s] running develop
+[1.490s] running egg_info
+[1.507s] writing delivery_robot.egg-info/PKG-INFO
+[1.507s] writing dependency_links to delivery_robot.egg-info/dependency_links.txt
+[1.507s] writing entry points to delivery_robot.egg-info/entry_points.txt
+[1.507s] writing requirements to delivery_robot.egg-info/requires.txt
+[1.507s] writing top-level names to delivery_robot.egg-info/top_level.txt
+[1.537s] reading manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.537s] writing manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.553s] running build_ext
+[1.553s] Creating /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery-robot.egg-link (link to .)
+[1.554s] Installing a_star_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.554s] Installing auto_controller script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.554s] Installing dwa_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.555s] 
+[1.555s] Installed /home/lap/delivery_robot_ws/build/delivery_robot
+[1.555s] running symlink_data
+[1.588s] Invoked command in '/home/lap/delivery_robot_ws/build/delivery_robot' returned '0': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data

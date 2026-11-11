@@ -1,0 +1,24 @@
+[0.697s] Invoking command in '/home/lap/delivery_robot_ws/src/delivery_robot': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/delivery_robot build --build-base /home/lap/delivery_robot_ws/build/delivery_robot/build install --record /home/lap/delivery_robot_ws/build/delivery_robot/install.log --install-scripts $base/lib/delivery_robot --single-version-externally-managed install_data
+[0.913s] running egg_info
+[0.928s] writing ../../build/delivery_robot/delivery_robot.egg-info/PKG-INFO
+[0.928s] writing dependency_links to ../../build/delivery_robot/delivery_robot.egg-info/dependency_links.txt
+[0.928s] writing entry points to ../../build/delivery_robot/delivery_robot.egg-info/entry_points.txt
+[0.928s] writing requirements to ../../build/delivery_robot/delivery_robot.egg-info/requires.txt
+[0.928s] writing top-level names to ../../build/delivery_robot/delivery_robot.egg-info/top_level.txt
+[0.959s] reading manifest file '../../build/delivery_robot/delivery_robot.egg-info/SOURCES.txt'
+[0.960s] writing manifest file '../../build/delivery_robot/delivery_robot.egg-info/SOURCES.txt'
+[0.960s] running build
+[0.960s] running build_py
+[0.961s] running install
+[0.966s] running install_lib
+[0.980s] running install_data
+[0.981s] copying models/delivery_robot/delivery_robot.sdf -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/models/delivery_robot
+[0.982s] running install_egg_info
+[0.997s] removing '/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot-0.0.0-py3.12.egg-info' (and everything under it)
+[0.998s] Copying ../../build/delivery_robot/delivery_robot.egg-info to /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot-0.0.0-py3.12.egg-info
+[1.000s] running install_scripts
+[1.101s] Installing a_star_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.102s] Installing auto_controller script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.102s] Installing dwa_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.102s] writing list of installed files to '/home/lap/delivery_robot_ws/build/delivery_robot/install.log'
+[1.130s] Invoked command in '/home/lap/delivery_robot_ws/src/delivery_robot' returned '0': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/delivery_robot build --build-base /home/lap/delivery_robot_ws/build/delivery_robot/build install --record /home/lap/delivery_robot_ws/build/delivery_robot/install.log --install-scripts $base/lib/delivery_robot --single-version-externally-managed install_data

@@ -1,0 +1,25 @@
+[1.157s] Invoking command in '/home/lap/delivery_robot_ws/build/delivery_robot': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data --force
+[1.470s] running develop
+[1.652s] running egg_info
+[1.670s] writing delivery_robot.egg-info/PKG-INFO
+[1.671s] writing dependency_links to delivery_robot.egg-info/dependency_links.txt
+[1.671s] writing entry points to delivery_robot.egg-info/entry_points.txt
+[1.671s] writing requirements to delivery_robot.egg-info/requires.txt
+[1.671s] writing top-level names to delivery_robot.egg-info/top_level.txt
+[1.704s] reading manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.705s] writing manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.723s] running build_ext
+[1.725s] Creating /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery-robot.egg-link (link to .)
+[1.726s] Installing a_star_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.726s] Installing auto_controller script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.727s] Installing dwa_node script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.728s] 
+[1.728s] Installed /home/lap/delivery_robot_ws/build/delivery_robot
+[1.728s] running symlink_data
+[1.728s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/resource/delivery_robot -> /home/lap/delivery_robot_ws/install/delivery_robot/share/ament_index/resource_index/packages
+[1.729s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/package.xml -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot
+[1.729s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/launch/demo.launch.py -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/launch
+[1.730s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/worlds/delivery_world.sdf -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/worlds
+[1.730s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/worlds/delivery_world.sdf.backup -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/worlds
+[1.731s] symbolically linking /home/lap/delivery_robot_ws/build/delivery_robot/models/delivery_robot/delivery_robot.sdf -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/models/delivery_robot
+[1.764s] Invoked command in '/home/lap/delivery_robot_ws/build/delivery_robot' returned '0': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data --force

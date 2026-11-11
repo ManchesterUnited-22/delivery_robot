@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<sdf version="1.10">
+
+  <model name="road_vertical">
+
+    <static>true</static>
+
+    <link name="road_vertical_link">
+
+      <visual name="road_vertical_visual">
+
+        <pose>0 0 0.01 0 0 1.5708</pose>
+
+        <geometry>
+          <box>
+            <size>30 5 0.02</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.12 0.12 0.12 1</ambient>
+          <diffuse>0.15 0.15 0.15 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+
+  </model>
+
+</sdf>

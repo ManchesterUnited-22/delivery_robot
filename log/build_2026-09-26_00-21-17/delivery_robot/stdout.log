@@ -1,0 +1,36 @@
+running develop
+Removing /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery-robot.egg-link (link to .)
+running egg_info
+writing ../../build/delivery_robot/delivery_robot.egg-info/PKG-INFO
+writing dependency_links to ../../build/delivery_robot/delivery_robot.egg-info/dependency_links.txt
+writing entry points to ../../build/delivery_robot/delivery_robot.egg-info/entry_points.txt
+writing requirements to ../../build/delivery_robot/delivery_robot.egg-info/requires.txt
+writing top-level names to ../../build/delivery_robot/delivery_robot.egg-info/top_level.txt
+reading manifest file '../../build/delivery_robot/delivery_robot.egg-info/SOURCES.txt'
+writing manifest file '../../build/delivery_robot/delivery_robot.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/lap/delivery_robot_ws/build/delivery_robot/build
+creating /home/lap/delivery_robot_ws/build/delivery_robot/build/lib
+creating /home/lap/delivery_robot_ws/build/delivery_robot/build/lib/delivery_robot
+copying delivery_robot/keyboard_controller.py -> /home/lap/delivery_robot_ws/build/delivery_robot/build/lib/delivery_robot
+copying delivery_robot/__init__.py -> /home/lap/delivery_robot_ws/build/delivery_robot/build/lib/delivery_robot
+running install
+running install_lib
+creating /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot
+copying /home/lap/delivery_robot_ws/build/delivery_robot/build/lib/delivery_robot/keyboard_controller.py -> /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot
+copying /home/lap/delivery_robot_ws/build/delivery_robot/build/lib/delivery_robot/__init__.py -> /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot
+byte-compiling /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot/keyboard_controller.py to keyboard_controller.cpython-312.pyc
+byte-compiling /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot/__init__.py to __init__.cpython-312.pyc
+running install_data
+copying resource/delivery_robot -> /home/lap/delivery_robot_ws/install/delivery_robot/share/ament_index/resource_index/packages
+copying package.xml -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot
+copying launch/demo.launch.py -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/launch
+copying worlds/delivery_world.sdf -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/worlds
+copying worlds/delivery_world.sdf.backup -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/worlds
+copying models/delivery_robot/delivery_robot.sdf -> /home/lap/delivery_robot_ws/install/delivery_robot/share/delivery_robot/models/delivery_robot
+running install_egg_info
+Copying ../../build/delivery_robot/delivery_robot.egg-info to /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery_robot-0.0.0-py3.12.egg-info
+running install_scripts
+Installing auto_controller script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+writing list of installed files to '/home/lap/delivery_robot_ws/build/delivery_robot/install.log'

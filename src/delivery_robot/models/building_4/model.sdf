@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+
+<sdf version="1.10">
+
+  <model name="building_4">
+
+    <static>true</static>
+
+    <link name="building_link">
+
+      <!-- COLLISION -->
+
+      <collision name="collision">
+
+        <geometry>
+          <box>
+            <size>4.5 4 4.2</size>
+          </box>
+        </geometry>
+
+      </collision>
+
+
+      <!-- THÂN NHÀ -->
+
+      <visual name="body">
+
+        <geometry>
+          <box>
+            <size>4.5 4 4.2</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.72 0.58 0.38 1</ambient>
+          <diffuse>0.82 0.68 0.45 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- KÍNH TẦNG 1 -->
+
+      <visual name="glass_1">
+
+        <pose>0 2.01 -1.25 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>3.5 0.04 0.8</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.06 0.30 0.45 1</ambient>
+          <diffuse>0.10 0.42 0.65 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- KÍNH TẦNG 2 -->
+
+      <visual name="glass_2">
+
+        <pose>0 2.01 0.1 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>3.5 0.04 0.8</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.06 0.30 0.45 1</ambient>
+          <diffuse>0.10 0.42 0.65 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- KÍNH TẦNG 3 -->
+
+      <visual name="glass_3">
+
+        <pose>0 2.01 1.4 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>3.5 0.04 0.8</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.06 0.30 0.45 1</ambient>
+          <diffuse>0.10 0.42 0.65 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- CỬA RA VÀO -->
+
+      <visual name="entrance">
+
+        <pose>1.25 2.03 -1.25 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>0.8 0.05 1.5</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.18 0.10 0.05 1</ambient>
+          <diffuse>0.28 0.16 0.08 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- MÁI -->
+
+      <visual name="roof">
+
+        <pose>0 0 2.15 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>4.8 4.3 0.25</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.20 0.18 0.15 1</ambient>
+          <diffuse>0.28 0.25 0.21 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- VIỀN TẦNG 1 -->
+
+      <visual name="floor_band_1">
+
+        <pose>0 2.04 -0.55 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>4.5 0.08 0.12</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.30 0.24 0.18 1</ambient>
+          <diffuse>0.38 0.30 0.22 1</diffuse>
+        </material>
+
+      </visual>
+
+
+      <!-- VIỀN TẦNG 2 -->
+
+      <visual name="floor_band_2">
+
+        <pose>0 2.04 0.75 0 0 0</pose>
+
+        <geometry>
+          <box>
+            <size>4.5 0.08 0.12</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.30 0.24 0.18 1</ambient>
+          <diffuse>0.38 0.30 0.22 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+
+  </model>
+
+</sdf>

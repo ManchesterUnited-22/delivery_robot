@@ -1,0 +1,17 @@
+[1.109s] Invoking command in '/home/lap/delivery_robot_ws/build/delivery_robot': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data
+[1.426s] running develop
+[1.635s] running egg_info
+[1.661s] writing delivery_robot.egg-info/PKG-INFO
+[1.661s] writing dependency_links to delivery_robot.egg-info/dependency_links.txt
+[1.662s] writing entry points to delivery_robot.egg-info/entry_points.txt
+[1.662s] writing requirements to delivery_robot.egg-info/requires.txt
+[1.662s] writing top-level names to delivery_robot.egg-info/top_level.txt
+[1.703s] reading manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.704s] writing manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.728s] running build_ext
+[1.728s] Creating /home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages/delivery-robot.egg-link (link to .)
+[1.729s] Installing auto_controller script to /home/lap/delivery_robot_ws/install/delivery_robot/lib/delivery_robot
+[1.729s] 
+[1.729s] Installed /home/lap/delivery_robot_ws/build/delivery_robot
+[1.730s] running symlink_data
+[1.789s] Invoked command in '/home/lap/delivery_robot_ws/build/delivery_robot' returned '0': PYTHONPATH=/home/lap/delivery_robot_ws/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lap/delivery_robot_ws/install/delivery_robot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/lap/delivery_robot_ws/build/delivery_robot/build --no-deps symlink_data
